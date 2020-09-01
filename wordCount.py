@@ -51,6 +51,7 @@ def openFile(mainFile, outputFile):
     with open(outputFile, 'w') as data:
         for key in sortedDict:
             data.write(key + ' ' + str(wordDict[key]) + '\n')
+            print(key + ' ' + str(wordDict[key]) + '\n')
                        
 def main():
 
