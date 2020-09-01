@@ -34,10 +34,10 @@ def openFile(mainFile, outputFile):
     
     with open(mainFile, 'r') as inputFile:
         for line in inputFile:
-            #get rid of newline characters
+            #get rid of newline charachters
             line = line.strip()
-            #split line on whitespace and punctuation
-            wordList = re.split('[ \t]', line)
+            #split line on special characters
+            wordList = re.split("[ \t,.';:-]", line)
             for word in wordList:
                 word = word.lower()
                 if word in wordDict.keys():
@@ -54,7 +54,6 @@ def openFile(mainFile, outputFile):
                        
 def main():
 
-    print("main")
     mainInput, mainOutput = argumentCheck()
     fileCheck(mainInput, mainOutput)
     #If output file has any text then this will clear it
