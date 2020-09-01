@@ -26,7 +26,7 @@ def fileCheck(inputFile, outputFile):
         print("output file %s doesn't exist. Exiting" % outputFile)
         exit()
 
-#By creating a new dictionary and splitting the lines into words then inserting
+#Creating a new dictionary and splitting the lines into words then inserting
 #the word into dictionary and adding 1 to the count of the word
 def openFile(mainFile, outputFile):
 
@@ -36,8 +36,8 @@ def openFile(mainFile, outputFile):
         for line in inputFile:
             #get rid of newline charachters
             line = line.strip()
-            #split line on special characters
-            wordList = re.split("[ \t,.';:-]", line)
+            #Finding all the words and excluding special characters
+            wordList = re.findall("[a-zA-Z]+", line)
             for word in wordList:
                 word = word.lower()
                 if word in wordDict.keys():
