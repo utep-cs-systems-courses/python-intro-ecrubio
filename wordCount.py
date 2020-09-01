@@ -28,7 +28,7 @@ def fileCheck(inputFile, outputFile):
 
 #By creating a new dictionary and splitting the lines into words then inserting
 #the word into dictionary and adding 1 to the count of the word
-def openFile(mainFile):
+def openFile(mainFile, outputFile):
 
     wordDict = {}
     
@@ -44,14 +44,22 @@ def openFile(mainFile):
                     wordDict[word] += 1
                 else:
                     wordDict[word] = 1
-    print(wordDict)
 
+    sortedDict = sorted(wordDict)
+                    
+    #sorted keys into text file
+    with open(outputFile, 'w') as data:
+        for key in sortedDict:
+            data.write(key + ' ' + str(wordDict[key]) + '\n')
+                       
 def main():
 
     print("main")
     mainInput, mainOutput = argumentCheck()
     fileCheck(mainInput, mainOutput)
-    openFile(mainInput)
+    #If output file has any text then this will clear it
+    open(mainOutput, 'w').close()
+    openFile(mainInput, mainOutput)
 
 if __name__ == '__main__':
     main()
